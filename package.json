@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "MVC boilerplate for Node/MongoDB projects with Tailwind and Pug, with authentication via Passport.",
   "main": "src/server.js",
-	"type": "module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node .",
-		"dev": "nodemon ."
+    "start": "node .",
+    "dev": "nodemon ."
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
+    "mongoose": "^6.6.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2",
