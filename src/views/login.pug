@@ -1,0 +1,17 @@
+extends layouts/default.pug
+
+block variables
+	- const title = "Log In"
+
+block content
+	main
+		h1 Login
+		form.mt-5
+			label(for="email") Email
+			input#email(type="email", name="email")
+			label(for="pwd") Password
+			input#pwd(type="password", name="password")
+			button(type="submit") Log In
+
+	block scripts
+		script(src="/js/login.js") 

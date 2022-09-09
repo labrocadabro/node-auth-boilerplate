@@ -10,10 +10,10 @@ const router = express.Router();
 router.get('/', pages.index);
 // router.get('/dashboard', connectEnsureLogin.ensureLoggedIn(), pages.dashboard);
 
-// router.get('/logout', auth.logout);
-// router.get('/login', auth.showLogin);
-// router.post('/login', auth.login);
-// router.get('/register', auth.showReg);
-// router.post('/register', auth.register);
+router.get('/logout', pages.logout);
+router.get('/login', pages.showLogin);
+router.post('/login', pages.login);
+router.get('/register', pages.showReg);
+router.post('/register', pages.register);
 
 export default router;
