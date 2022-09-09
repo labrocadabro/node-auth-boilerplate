@@ -6,12 +6,13 @@ block variables
 block content
 	main
 		h1 Login
-		form.mt-5
+
+		form.mt-5(action="/login" method="post")
 			label(for="email") Email
-			input#email(type="email", name="email")
+			input#email(type="email", name="username")
 			label(for="pwd") Password
 			input#pwd(type="password", name="password")
 			button(type="submit") Log In
 
-	block scripts
-		script(src="/js/login.js") 
+	//- block scripts
+	//- 	script(src="/js/login.js") 

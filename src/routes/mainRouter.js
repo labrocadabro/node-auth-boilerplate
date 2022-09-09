@@ -3,17 +3,19 @@ import express from 'express';
 
 
 import * as pages from '../controllers/pages.js';
-// import * as auth from '../controllers/auth.js';
+import * as auth from '../controllers/auth.js';
 
 const router = express.Router();
 
 router.get('/', pages.index);
-// router.get('/dashboard', connectEnsureLogin.ensureLoggedIn(), pages.dashboard);
+router.get('/dashboard', pages.dashboard);
+// connectEnsureLogin.ensureLoggedIn(),
 
-router.get('/logout', pages.logout);
-router.get('/login', pages.showLogin);
-router.post('/login', pages.login);
-router.get('/register', pages.showReg);
-router.post('/register', pages.register);
+router.get('/register', pages.register);
+router.get('/login', pages.login);
+
+router.post('/register', auth.register);
+router.post('/login', auth.login);
+router.get('/logout', auth.logout);
 
 export default router;

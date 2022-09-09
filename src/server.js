@@ -7,8 +7,10 @@ import dotenv from 'dotenv';
 import * as url from 'url';
 
 import connectDB from "./config/db.js";
-import mainRouter from "./routes/mainRouter.js";
 import User from "./models/User.js";
+import mainRouter from "./routes/mainRouter.js";
+import loggedIn from "./middleware/loggedIn.js";
+import flash from "./middleware/flash.js";
 
 // const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
@@ -17,13 +19,12 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
-console.log(port)
 
 app.set('views', './src/views');
 app.set('view engine', 'pug'); 
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(cors());
 app.use(session({
@@ -34,12 +35,13 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use("/", mainRouter);
-
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+app.use(loggedIn);
+app.use(flash);
+
+app.use("/", mainRouter);
 
 connectDB();
 

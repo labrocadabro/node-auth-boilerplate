@@ -1,8 +1,13 @@
-header
-	nav
-		ul.flex.gap-3
-			li 
-				a(href="/") Home
+nav
+	ul.flex.gap-3
+		li 
+			a(href="/") Home
+		if (loggedIn)
+			li
+					a(href="/dashboard") Dashboard
+			li
+				a(href="/logout") Logout
+		else
 			li 
 				a(href="/login") Login
 			li 

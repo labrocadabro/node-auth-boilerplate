@@ -29,7 +29,8 @@
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",

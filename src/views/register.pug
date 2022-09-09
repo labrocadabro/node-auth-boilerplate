@@ -6,14 +6,15 @@ block variables
 block content
 	main
 		h1 Register
-		form.mt-5
+
+		form.mt-5(action="/register" method="post")
 			label(for="email") Email
-			input#email(type="email", name="email")
+			input#email(type="email", name="username")
 			label(for="pwd") Password
 			input#pwd(type="password", name="password")
 			label(for="conf") Confirm Password
 			input#conf(type="password", name="confirm")
 			button(type="submit") Register
 			
-	block scripts
-		script(src="/js/register.js") 
+	//- block scripts
+	//- 	script(src="/js/register.js") 

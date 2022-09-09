@@ -1,0 +1,4 @@
+if (flash) 
+	div(open role="alert" class="flash flash-" + flash.type)
+		each message in flash.message  
+			p #{message}
