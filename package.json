@@ -2,9 +2,11 @@
   "name": "node-mongo-boilerplate",
   "version": "1.0.0",
   "description": "MVC boilerplate for Node/MongoDB projects with Tailwind and Pug, with authentication via Passport.",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node .",
+		"dev": "nodemon ."
   },
   "repository": {
     "type": "git",
