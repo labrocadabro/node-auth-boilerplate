@@ -42,6 +42,9 @@ app.use(loggedIn);
 app.use(flash);
 
 app.use("/", mainRouter);
+app.use((req, res, next) => {
+  res.status(404).render("404");
+});
 
 connectDB();
 

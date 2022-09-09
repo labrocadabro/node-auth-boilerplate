@@ -10,17 +10,17 @@ html
 		link(rel="manifest" href="/site.webmanifest")
 		link(rel="stylesheet" href="/css/index.css")
 		title= title
-	body(class="px-14 py-8")
+	body.flex.flex-col.min-h-screen
 
-		header
+		header.py-5.bg-gray-200
 			include ../partials/header.pug
 
-		main
+		main.px-14.py-8
 			include ../partials/flash.pug
 			
 			block content
 
-		footer
+		footer.mt-auto.py-5.bg-gray-200
 			include ../partials/footer.pug
 
 		block scripts

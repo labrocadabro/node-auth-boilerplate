@@ -16,7 +16,7 @@
   /* 2 */
   border-style: solid;
   /* 2 */
-  border-color: currentColor;
+  border-color: #e5e7eb;
   /* 2 */
 }
 
@@ -581,17 +581,17 @@ select {
 
 a {
   --tw-text-opacity: 1;
-  color: rgb(128 24 10 / var(--tw-text-opacity));
+  color: rgb(157 23 77 / var(--tw-text-opacity));
   text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 h1 {
   font-size: 1.5rem;
   line-height: 2rem;
-}
-
-main {
-  margin-top: 1.25rem;
 }
 
 *, ::before, ::after {
@@ -735,8 +735,48 @@ main {
   --tw-backdrop-sepia:  ;
 }
 
-.mt-5 {
+.sign-form {
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 1.25rem;
+  display: grid;
+  max-width: 28rem;
+  gap: 0.5rem;
+  border-width: 1px;
+  padding: 2.5rem;
+  grid-template-columns: auto 1fr;
+}
+
+.sign-form label {
+  text-align: right;
+}
+
+.sign-form div {
+  margin-top: 0.5rem;
+}
+
+.sign-form button {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.sign-form button:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .block {
@@ -747,8 +787,26 @@ main {
   display: flex;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
 .gap-3 {
   gap: 0.75rem;
+}
+
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .px-14 {
@@ -759,4 +817,8 @@ main {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.text-center {
+  text-align: center;
 }

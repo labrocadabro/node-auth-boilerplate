@@ -4,14 +4,13 @@ block variables
 	- const title = "Log In"
 
 block content
-	main
-		h1 Login
-
-		form.mt-5(action="/login" method="post")
-			label(for="email") Email
-			input#email(type="email", name="username")
-			label(for="pwd") Password
-			input#pwd(type="password", name="password")
+	form.sign-form.signin(action="/login" method="post")
+		span.col-span-2 New? #[a(href="/register") Create an account]
+		label(for="email") Email
+		input#email(type="email", name="username" placeholder="Ex: john@smith.com")
+		label(for="pwd") Password
+		input#pwd(type="password", name="password" placeholder="Enter password")
+		div.col-span-2.text-center
 			button(type="submit") Log In
 
 	//- block scripts

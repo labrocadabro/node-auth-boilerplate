@@ -4,16 +4,15 @@ block variables
 	- const title = "Register"
 
 block content
-	main
-		h1 Register
-
-		form.mt-5(action="/register" method="post")
-			label(for="email") Email
-			input#email(type="email", name="username")
-			label(for="pwd") Password
-			input#pwd(type="password", name="password")
-			label(for="conf") Confirm Password
-			input#conf(type="password", name="confirm")
+	form.sign-form.signup(action="/register" method="post")
+		span.col-span-2 Have an account? #[a(href="/login") Log in]
+		label(for="email") Email
+		input#email(type="email", name="username" placeholder="Ex: john@smith.com")
+		label(for="pwd") Password
+		input#pwd(type="password", name="password" placeholder="Enter password")
+		label(for="conf") Confirm
+		input#conf(type="password", name="confirm" placeholder="Reenter password")
+		div.col-span-2.text-center
 			button(type="submit") Register
 			
 	//- block scripts
