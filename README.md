@@ -6,9 +6,11 @@ Boilerplate code for setting up a Node and MongoDB project with Tailwind and Pug
 
 **Built with:** Node, Express, MongoDB, Passport, TailwindCSS, and Pug
 
-This is a pretty straightforward MVC skeleton for a Node + MongoDB project. I used Mongoose for the models, and passport-local-mongoose takes case of the authentication fields (username, hash, and salt) automatically so the model doesn't even need any fields. I added a small middleware to pass logged in status to the views automatically, and a second small middleware to make flash messages possible.
+This is a pretty straightforward MVC skeleton for a Node + MongoDB project. I used Mongoose for the models, and passport-local-mongoose takes case of the authentication fields (username, hash, and salt) automatically so the model doesn't even need any fields.
 
-The auth controllers perform server-side validation and return flash messages on both failure and success. I chose Pug because I like how clean it keeps the views, and Tailwind makes the CSS much easier to track and manage.
+I added a small middleware to pass logged in status to the views automatically, and a second small middleware to make flash messages possible. The auth controllers perform server-side validation and return flash messages on both failure and success. 
+
+I chose Pug because I like how clean it keeps the views, and Tailwind makes the CSS much easier to track and manage.
 
 ## Optimizations
 
