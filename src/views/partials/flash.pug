@@ -1,4 +1,5 @@
 if (flash) 
 	div(open role="alert" class="flash flash-" + flash.type)
+		span#flash-close &times;
 		each message in flash.message  
-			p #{message}
+			span #{message}

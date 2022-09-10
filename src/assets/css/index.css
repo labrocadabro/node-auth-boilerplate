@@ -772,6 +772,7 @@ h1 {
 }
 
 .flash {
+  position: relative;
   margin-bottom: 1rem;
   width: 100%;
   border-width: 1px;
@@ -781,6 +782,15 @@ h1 {
   padding-right: 1rem;
   text-align: center;
   font-weight: 700;
+}
+
+#flash-close {
+  position: absolute;
+  right: 0.75rem;
+  cursor: pointer;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  top: 0;
 }
 
 .flash-success {
