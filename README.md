@@ -14,10 +14,7 @@ I chose Pug because I like how clean it keeps the views, and Tailwind makes the 
 
 ## Optimizations
 
-- style flash messages
-- client side validation
-- error feedback on specific inputs
-- other auth options (facebook, google, github)
+Tracked in Issues.
 
 ## Lessons Learned:
 
