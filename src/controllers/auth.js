@@ -41,7 +41,7 @@ export const login = (req, res, next) => {
 	passport.authenticate('local', (err, user, info) => {
 		if (err) { return next(err) }
 		if (!user) {
-			req.session.flash = { type: "error", message: ["User not found"]};
+			req.session.flash = { type: "error", message: ["Invalid email or password"]};
 			return res.redirect('/login');
 		}
 		req.logIn(user, (err) => {

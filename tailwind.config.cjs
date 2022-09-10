@@ -5,4 +5,5 @@ module.exports = {
     extend: {},
   },
   plugins: [require('@tailwindcss/forms'),],
+	safelist: ['flash-success', 'flash-error', 'flash-info']
 }
