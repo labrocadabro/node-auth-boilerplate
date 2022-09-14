@@ -8,7 +8,7 @@ import * as url from 'url';
 
 import connectDB from "./config/db.js";
 import User from "./models/User.js";
-import loggedIn from "./middleware/loggedIn.js";
+import auth from "./middleware/auth.js";
 import flash from "./middleware/flash.js";
 
 import mainRouter from "./routes/mainRouter.js";
@@ -41,7 +41,7 @@ app.use(passport.session());
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-app.use(loggedIn);
+app.use(auth);
 app.use(flash);
 
 app.use("/", mainRouter);

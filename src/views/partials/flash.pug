@@ -3,7 +3,12 @@ if (flash)
 		span.flash-close &times;
 		each message in flash.message  
 			span #{message}
-if (user && !user.verified) 
-	div(open role="alert" class="flash flash-error")
-		span.flash-close &times;
-		span You have not yet verified your account. #[a(href="/email/verify") Resend email]
+if (user && !user.verified)
+	if (token) 
+		div(role="alert" class="flash flash-info")
+			span.flash-close &times;
+			span A verification email was sent to #{user.username}. Didn't receive it? #[a(href="/email/verify") Resend]
+	else
+		div(role="alert" class="flash flash-error")
+			span.flash-close &times;
+			span You have not yet verified your account. #[a(href="/email/verify") Send email]

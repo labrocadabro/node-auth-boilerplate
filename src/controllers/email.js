@@ -24,7 +24,6 @@ export const verify = async (req, res) => {
 		const token = crypto.randomBytes(32).toString('hex');
 		await new Token({token, email: req.user.username}).save();
 		await sendVerification(token, req.user.username);
-		req.session.flash = { type: 'success', message: ['Verification link sent, please check your email']};
 	}
 	res.redirect(req.session.returnTo || '/dashboard');
 };

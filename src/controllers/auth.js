@@ -18,8 +18,7 @@ export const register = async (req, res) => {
 		const user = new User({ username: req.body.username });
 		await User.register(user, req.body.password);
 		passport.authenticate('local')(req, res, function () {
-			req.session.flash = { type: "success", message: ['Account created successfully'] };
-			res.redirect('/dashboard');
+			res.redirect('/email/verify');
 		});
 
 	} catch (err) {
