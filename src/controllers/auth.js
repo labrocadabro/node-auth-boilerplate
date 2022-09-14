@@ -58,6 +58,12 @@ export const logout = (req, res) => {
 };
 
 
+export const notLoggedIn = (req, res) => {
+	req.session.flash = { type: "error", message: "Please log in to continue." };
+	res.redirect('/login');
+}
+
+
 
 
 
