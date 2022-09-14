@@ -20,16 +20,17 @@ const transport = nodemailer.createTransport({
 });
 
 export const verify = async (req, res) => {
-	if (req.user.verified) res.redirect('/dashboard');
-	const token = crypto.randomBytes(32).toString('hex');
-	await new Token({token, email: req.user.username}).save();
-	await sendVerification(token, req.user.username);
-	req.session.flash = { type: 'success', message: ['Verification link sent, please check your email']};
+	if (!req.user.verified) {
+		const token = crypto.randomBytes(32).toString('hex');
+		await new Token({token, email: req.user.username}).save();
+		await sendVerification(token, req.user.username);
+		req.session.flash = { type: 'success', message: ['Verification link sent, please check your email']};
+	}
 	res.redirect(req.session.returnTo || '/dashboard');
 };
 
 export const sendVerification = async (token, email) => {
-	const url = `${process.env.DOMAIN}/email/verify?${token}`;
+	const url = `${process.env.DOMAIN}/verify?token=${token}`;
 	await transport.sendMail({
 		from: process.env.FROM_EMAIL,
 		to: email,

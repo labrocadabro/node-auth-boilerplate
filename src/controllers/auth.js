@@ -2,7 +2,7 @@ import passport from 'passport';
 import validator from 'validator';
 
 import User from '../models/User.js';
-
+import Token from '../models/Token.js';
 
 export const register = async (req, res) => {
 
@@ -63,6 +63,30 @@ export const notLoggedIn = (req, res) => {
 	res.redirect('/login');
 }
 
+export const verify = async (req, res) => {
+	try {
+		if (!req.query.token) return res.redirect('/dashboard');
+		const token = await Token.findOne({ token: req.query.token });
+		if (!token) {
+			req.session.flash = { type: "error", message: ["Invalid or expired token."]}
+			return res.redirect('/dashboard');
+		}
+		await User.findOneAndUpdate(
+				{ username: token.email },
+				{ verified: true}
+			);
+		await Token.findOneAndDelete({ token });
+		req.session.flash = { type: "success", message: ["Your email has been verified."]}
+		res.redirect('/dashboard');
+	} catch (err) {
+		console.log(err);
+		req.session.flash = { type: "error", message: ["Verification error."]}
+		res.redirect('/dashboard');
+	}
+	
+
+
+}
 
 
 
