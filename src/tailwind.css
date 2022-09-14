@@ -35,7 +35,7 @@
 	.flash {
 		@apply w-full py-2 px-4 mb-4 border text-center font-bold relative;
 	}
-	#flash-close {
+	.flash-close {
 		@apply absolute right-3 cursor-pointer text-3xl;
 		top: 0;
 	}

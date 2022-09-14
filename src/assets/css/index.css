@@ -784,7 +784,7 @@ h1 {
   font-weight: 700;
 }
 
-#flash-close {
+.flash-close {
   position: absolute;
   right: 0.75rem;
   cursor: pointer;

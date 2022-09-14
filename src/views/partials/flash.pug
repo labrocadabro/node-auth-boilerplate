@@ -1,9 +1,9 @@
 if (flash) 
 	div(open role="alert" class="flash flash-" + flash.type)
-		span#flash-close &times;
+		span.flash-close &times;
 		each message in flash.message  
 			span #{message}
 if (user && !user.verified) 
 	div(open role="alert" class="flash flash-error")
-		span#flash-close &times;
+		span.flash-close &times;
 		span You have not yet verified your account. #[a(href="/send-verify") Resend email]

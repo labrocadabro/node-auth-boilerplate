@@ -1,3 +1,3 @@
-closeFlash = document.getElementById('flash-close');
+closeFlash = document.querySelectorAll('.flash-close');
 
-closeFlash && closeFlash.addEventListener('click', () => closeFlash.parentNode.style.display = "none");
+closeFlash && closeFlash.forEach(flash => flash.addEventListener('click', () => flash.parentNode.style.display = "none"));
