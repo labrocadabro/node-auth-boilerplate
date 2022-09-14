@@ -9,7 +9,6 @@ const router = express.Router();
 
 router.get('/', pages.index);
 router.get('/dashboard', pages.dashboard);
-// connectEnsureLogin.ensureLoggedIn(),
 
 router.get('/register', pages.register);
 router.get('/login', pages.login);
@@ -17,5 +16,7 @@ router.get('/login', pages.login);
 router.post('/register', auth.register);
 router.post('/login', auth.login);
 router.get('/logout', auth.logout);
+
+router.get('/send-verify', auth.sendVerification);
 
 export default router;

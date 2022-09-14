@@ -1,6 +1,8 @@
 import passport from 'passport';
 import validator from 'validator';
+import crypto from 'crypto';
 import User from '../models/User.js';
+
 
 export const register = async (req, res) => {
 
@@ -56,11 +58,17 @@ export const logout = (req, res) => {
 	res.redirect('/login');
 };
 
-
 export const notLoggedIn = (req, res) => {
 	req.session.flash = { type: "error", message: "Please log in to continue." };
 	res.redirect('/login');
 }
+
+export const sendVerification = (req, res) => {
+	if (req.user.verified) res.redirect('/dashboard');
+	const token = crypto.randomBytes(32).toString('hex');
+	console.log(token)
+	res.redirect(req.session.returnTo || '/dashboard');
+};
 
 
 

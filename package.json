@@ -22,6 +22,7 @@
   "homepage": "https://github.com/labrocadabro/node-mongo-boilerplate#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
