@@ -46,7 +46,6 @@ export const login = (req, res, next) => {
 		}
 		req.logIn(user, (err) => {
 			if (err) { return next(err) }
-			req.session.flash = { type: "success", message: ['You are logged in'] };
 			res.redirect(req.session.returnTo || '/dashboard');
 		})
 	})(req, res, next)
