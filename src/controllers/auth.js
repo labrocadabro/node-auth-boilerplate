@@ -70,10 +70,13 @@ export const verify = async (req, res) => {
 			req.session.flash = { type: "error", message: ["Invalid or expired token."]}
 			return res.redirect('/dashboard');
 		}
-		await User.findOneAndUpdate(
-				{ username: token.email },
-				{ verified: true}
-			);
+		const user = await User.findOne({ username: token.email });
+		if (!user || user.username !== req.user.username) {
+			req.session.flash = { type: "error", message: ["Invalid or expired token."]}
+			return res.redirect('/dashboard');
+		}
+		user.verified = true;
+		await user.save();
 		await Token.findOneAndDelete({ token });
 		req.session.flash = { type: "success", message: ["Your email has been verified."]}
 		res.redirect('/dashboard');
