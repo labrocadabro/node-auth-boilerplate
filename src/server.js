@@ -8,9 +8,12 @@ import * as url from 'url';
 
 import connectDB from "./config/db.js";
 import User from "./models/User.js";
-import mainRouter from "./routes/mainRouter.js";
 import loggedIn from "./middleware/loggedIn.js";
 import flash from "./middleware/flash.js";
+
+import mainRouter from "./routes/mainRouter.js";
+import emailRouter from "./routes/emailRouter.js";
+
 
 // const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
@@ -42,6 +45,7 @@ app.use(loggedIn);
 app.use(flash);
 
 app.use("/", mainRouter);
+app.use("/email", emailRouter);
 app.use((req, res, next) => {
   res.status(404).render("404");
 });

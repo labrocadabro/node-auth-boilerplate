@@ -1,6 +1,6 @@
 import passport from 'passport';
 import validator from 'validator';
-import crypto from 'crypto';
+
 import User from '../models/User.js';
 
 
@@ -63,12 +63,7 @@ export const notLoggedIn = (req, res) => {
 	res.redirect('/login');
 }
 
-export const sendVerification = (req, res) => {
-	if (req.user.verified) res.redirect('/dashboard');
-	const token = crypto.randomBytes(32).toString('hex');
-	req.session.flash = { type: 'success', message: ['Verification link sent, please check your email']};
-	res.redirect(req.session.returnTo || '/dashboard');
-};
+
 
 
 
