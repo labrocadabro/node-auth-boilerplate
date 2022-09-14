@@ -66,7 +66,7 @@ export const notLoggedIn = (req, res) => {
 export const sendVerification = (req, res) => {
 	if (req.user.verified) res.redirect('/dashboard');
 	const token = crypto.randomBytes(32).toString('hex');
-	console.log(token)
+	req.session.flash = { type: 'success', message: ['Verification link sent, please check your email']};
 	res.redirect(req.session.returnTo || '/dashboard');
 };
 
