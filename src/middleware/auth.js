@@ -6,7 +6,7 @@ export default async function auth(req, res, next) {
 		res.locals.user = req.user;
 		if (!req.user.verified) {
 			const token = await Token.findOne({ email: req.user.username });
-			res.locals.token = token || null;
+			res.locals.token = token;
 		} else {
 			res.locals.token = null;
 		}

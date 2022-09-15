@@ -11,8 +11,7 @@ export const dashboard = (req, res) => {
 
 export const login = (req, res) => {
 	if (req.isAuthenticated()) res.redirect('/dashboard');
-	else res.render('login');
-	
+	else res.render('login');	
 };
 
 export const register = (req, res) => {
@@ -20,4 +19,8 @@ export const register = (req, res) => {
 	else res.render('register');
 };
 
+export const forgot = (req, res) => {
+	if (req.isAuthenticated()) res.redirect('/dashboard');
+	else res.render('forgot');	
+};
 

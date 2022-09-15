@@ -5,8 +5,7 @@ block variables
 
 block content
 	form.sign-form.signup(action="/register" method="post")
-		h1 Register
-		span.col-span-2 Have an account? #[a(href="/login") Log in]
+		h1.col-span-2 Register
 		label(for="email") Email
 		input#email(type="email", name="username" placeholder="Ex: john@smith.com")
 		label(for="pwd") Password
@@ -15,6 +14,7 @@ block content
 		input#conf(type="password", name="confirm" placeholder="Reenter password")
 		div.col-span-2.text-center
 			button(type="submit") Register
+		span.col-span-2.text-center #[a(href="/login") Log in] | #[a(href="/forgot") Forgot password]
 			
 	//- block extra-scripts
 	//- 	script(src="/js/register.js") 
