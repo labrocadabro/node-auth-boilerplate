@@ -87,11 +87,18 @@ export const verify = async (req, res) => {
 }
 
 export const reset = async (req, res) => {
+	const validationErrors = [];
 	const user = await User.findOne({ username: req.body.username });
 	if (!user) {
 		req.session.flash = { type: 'error', message: ['Invalid user.']};
 		return res.redirect('/forgot');
 	}
+	if (validator.isEmpty(req.body.password)) validationErrors.push('Password cannot be blank');
+		if (!validator.equals(req.body.password, req.body.confirm)) validationErrors.push('Passwords must match');
+		if (validationErrors.length) {
+			req.session.flash = { type: "error", message: validationErrors };
+			return res.redirect(`/reset?token=${req.body.token}`);
+		}
 	await user.setPassword(req.body.password);
 	await user.save();
 	await Token.findOneAndDelete({ token: req.body.token })

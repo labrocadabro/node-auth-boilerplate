@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
+import validator from 'validator';
 
 import User from '../models/User.js';
 import Token from '../models/Token.js';
@@ -38,6 +39,10 @@ export const verify = async (req, res) => {
 };
 
 export const forgot = async (req, res) => {
+	if (!validator.isEmail(req.body.username)) {
+		req.session.flash = { type: "error", message: "Please enter a valid email address." };
+		return res.redirect('/forgot');
+	}
 	const email = req.body.username;
 	const user = await User.findOne({ username: email });
 	// will need some logic here to handle 3rd party logins that don't have passwords
