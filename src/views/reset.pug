@@ -4,7 +4,7 @@ block variables
 	- const title = "Reset Password"
 
 block content
-	form.sign-form.forgot(action="/reset" method="post")
+	form.sign-form.reset(action="/reset" method="post")
 		input(type="hidden" name="username" value=email) 
 		input(type="hidden" name="token" value=token) 
 		h1.col-span-2 Reset Password
