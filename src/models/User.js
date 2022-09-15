@@ -4,8 +4,14 @@ import passportLocalMongoose from 'passport-local-mongoose';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-// username and password are handled automatically by passport local mongoose
-verified: {type: Boolean, default: false}
+	// username and password are handled automatically by passport local mongoose
+	verified: {type: Boolean, default: false},
+	googleId: String,
+	facebookId: String,
+	amazonId: String,
+	appleId: String,
+	githubId: String
+
 });
 
 userSchema.plugin(passportLocalMongoose);
