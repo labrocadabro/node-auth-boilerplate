@@ -39,6 +39,6 @@ export const reset = async (req, res) => {
 	} catch (err) {
 		console.log(err);
 		req.session.flash = { type: "error", message: ["Verification error."]}
-		res.redirect('/login');
+		res.redirect('/forgot');
 	}
 }
