@@ -1,6 +1,8 @@
 import passport from 'passport';
 import validator from 'validator';
+
 import User from '../models/User.js';
+import Token from '../models/Token.js';
 
 export const register = async (req, res) => {
 
@@ -16,8 +18,7 @@ export const register = async (req, res) => {
 		const user = new User({ username: req.body.username });
 		await User.register(user, req.body.password);
 		passport.authenticate('local')(req, res, function () {
-			req.session.flash = { type: "success", message: ['Account created successfully'] };
-			res.redirect('/dashboard');
+			res.redirect('/email/verify');
 		});
 
 	} catch (err) {
@@ -46,7 +47,6 @@ export const login = (req, res, next) => {
 		}
 		req.logIn(user, (err) => {
 			if (err) { return next(err) }
-			req.session.flash = { type: "success", message: ['You are logged in'] };
 			res.redirect(req.session.returnTo || '/dashboard');
 		})
 	})(req, res, next)
@@ -56,6 +56,40 @@ export const logout = (req, res) => {
 	req.logout(err => { if (err) return next(err) });
 	res.redirect('/login');
 };
+
+export const notLoggedIn = (req, res) => {
+	req.session.flash = { type: "error", message: "Please log in to continue." };
+	res.redirect('/login');
+}
+
+export const verify = async (req, res) => {
+	try {
+		if (!req.query.token) return res.redirect('/dashboard');
+		const token = await Token.findOne({ token: req.query.token });
+		if (!token) {
+			req.session.flash = { type: "error", message: ["Invalid or expired token."]}
+			return res.redirect('/dashboard');
+		}
+		const user = await User.findOne({ username: token.email });
+		if (!user || user.username !== req.user.username) {
+			req.session.flash = { type: "error", message: ["Invalid or expired token."]}
+			return res.redirect('/dashboard');
+		}
+		user.verified = true;
+		await user.save();
+		await Token.findOneAndDelete({ token });
+		req.session.flash = { type: "success", message: ["Your email has been verified."]}
+		res.redirect('/dashboard');
+	} catch (err) {
+		console.log(err);
+		req.session.flash = { type: "error", message: ["Verification error."]}
+		res.redirect('/dashboard');
+	}
+	
+
+
+}
+
 
 
 
