@@ -5,14 +5,14 @@ block variables
 
 block content
 	form.sign-form.signin(action="/login" method="post")
-		h1 Log In
-		span.col-span-2 New? #[a(href="/register") Create an account]
+		h1.col-span-2 Log In
 		label(for="email") Email
 		input#email(type="email", name="username" placeholder="Ex: john@smith.com")
 		label(for="pwd") Password
 		input#pwd(type="password", name="password" placeholder="Enter password")
 		div.col-span-2.text-center
 			button(type="submit") Log In
+		span.col-span-2.text-center #[a(href="/register") Create an account] | #[a(href="/forgot") Forgot password]
 
 	//- block extra-scripts
 	//- 	script(src="/js/login.js") 

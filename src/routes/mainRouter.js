@@ -12,9 +12,12 @@ router.get('/dashboard', pages.dashboard);
 
 router.get('/register', pages.register);
 router.get('/login', pages.login);
+router.get('/forgot', pages.forgot);
+router.get('/reset', pages.reset);
 
 router.post('/register', auth.register);
 router.post('/login', auth.login);
+router.post('/reset', auth.reset);
 router.get('/logout', auth.logout);
 
 router.get('/verify', auth.verify);
