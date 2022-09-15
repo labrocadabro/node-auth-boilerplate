@@ -34,7 +34,6 @@ export const login = (req, res, next) => {
 
 	if (validationErrors.length) {
 		req.session.flash = { type: "error", message: validationErrors };
-		console.log(validationErrors)
 		return res.redirect('/login');
 	}
 	req.body.username = validator.normalizeEmail(req.body.username, { gmail_remove_dots: false })
@@ -67,12 +66,12 @@ export const verify = async (req, res) => {
 		if (!req.query.token) return res.redirect('/dashboard');
 		const token = await Token.findOne({ token: req.query.token });
 		if (!token) {
-			req.session.flash = { type: "error", message: ["Invalid or expired token."]}
+			req.session.flash = { type: "error", message: ["Invalid or expired link."]}
 			return res.redirect('/dashboard');
 		}
 		const user = await User.findOne({ username: token.email });
 		if (!user || user.username !== req.user.username) {
-			req.session.flash = { type: "error", message: ["Invalid or expired token."]}
+			req.session.flash = { type: "error", message: ["Invalid or expired link."]}
 			return res.redirect('/dashboard');
 		}
 		user.verified = true;
@@ -85,9 +84,19 @@ export const verify = async (req, res) => {
 		req.session.flash = { type: "error", message: ["Verification error."]}
 		res.redirect('/dashboard');
 	}
-	
+}
 
-
+export const reset = async (req, res) => {
+	const user = await User.findOne({ username: req.body.username });
+	if (!user) {
+		req.session.flash = { type: 'error', message: ['Invalid user.']};
+		return res.redirect('/forgot');
+	}
+	await user.setPassword(req.body.password);
+	await user.save();
+	await Token.findOneAndDelete({ token: req.body.token })
+	req.session.flash = { type: "success", message: ["Password changed successfully."]};
+	res.redirect("/login");
 }
 
 
