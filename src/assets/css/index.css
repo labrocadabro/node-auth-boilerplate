@@ -755,7 +755,10 @@ h1 {
   margin-top: 0.5rem;
 }
 
-.sign-form button {
+.sign-form button,  .sign-form a.button {
+  margin-bottom: 0.75rem;
+  display: block;
+  width: 100%;
   border-radius: 0.25rem;
   border-width: 1px;
   --tw-border-opacity: 1;
@@ -764,9 +767,13 @@ h1 {
   padding-bottom: 0.5rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
 }
 
-.sign-form button:hover {
+.sign-form button:hover,  .sign-form a.button:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
