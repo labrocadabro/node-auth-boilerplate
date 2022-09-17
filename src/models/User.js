@@ -7,9 +7,6 @@ const userSchema = new Schema({
 	// username and password are handled automatically by passport local mongoose
 	verified: {type: Boolean, default: false},
 	googleId: String,
-	facebookId: String,
-	amazonId: String,
-	appleId: String,
 	githubId: String
 
 });
