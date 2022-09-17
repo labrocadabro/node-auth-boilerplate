@@ -13,7 +13,7 @@ const google = new GoogleStrategy({
 	async function(accessToken, refreshToken, profile, cb) {
     const user = await User.findOneAndUpdate(
 			{ username: profile.emails[0].value },
-			{ googleId: profile.id, verified: profile.emails[0].verified },
+			{ googleId: profile.id, verified: true },
 			{ new: true, upsert: true }
 		)
 		return cb(null, user);
