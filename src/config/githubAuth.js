@@ -11,7 +11,6 @@ const github = new GithubStrategy({
     callbackURL: `${process.env.DOMAIN}/oauth/github/callback`,
   },
 	async function(accessToken, refreshToken, profile, cb) {
-		console.log(profile)
 		let user = await User.findOne( { githubId: profile.id });
 		if (!user) {
 			user = await User.findOne( { username: profile.emails[0].value });
