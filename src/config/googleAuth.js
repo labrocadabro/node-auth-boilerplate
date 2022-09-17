@@ -8,14 +8,23 @@ dotenv.config();
 const google = new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT,
     clientSecret: process.env.GOOGLE_SECRET,
-    callbackURL: `${process.env.DOMAIN}/oauth/google/callback`
+    callbackURL: `${process.env.DOMAIN}/oauth/google/callback`,
   },
 	async function(accessToken, refreshToken, profile, cb) {
-    const user = await User.findOneAndUpdate(
-			{ username: profile.emails[0].value },
-			{ googleId: profile.id, verified: true },
-			{ new: true, upsert: true }
-		)
+		let user = await User.findOne( { googleId: profile.id });
+		if (!user) {
+			user = await User.findOne( { username: profile.emails[0].value });
+			if (user) {
+				user.googleId = profile.id;
+			} else {
+				user = new User({ 
+					username: profile.emails[0].value, 
+					googleId: profile.id, 
+					verified: profile.emails[0].verified
+				});
+			}
+			await user.save();
+		}
 		return cb(null, user);
 	}
 );
