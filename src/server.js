@@ -8,6 +8,7 @@ import * as url from 'url';
 
 import connectDB from "./config/db.js";
 import google from "./config/googleAuth.js";
+import github from "./config/githubAuth.js";
 
 import User from "./models/User.js";
 
@@ -44,6 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(User.createStrategy());
 passport.use(google);
+passport.use(github);
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
