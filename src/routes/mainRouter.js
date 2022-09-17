@@ -1,6 +1,4 @@
 import express from 'express';
-// import connectEnsureLogin from 'connect-ensure-login';
-
 
 import * as pages from '../controllers/pages.js';
 import * as auth from '../controllers/auth.js';

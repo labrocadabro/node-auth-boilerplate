@@ -26,11 +26,8 @@
 	.sign-form div {
 		@apply mt-2;
 	}
-	.sign-form button {
-		@apply py-2 px-5 border border-gray-700 rounded;
-	}
-	.sign-form button:hover {
-		@apply bg-gray-100;
+	.sign-form button, .sign-form a.button {
+		@apply py-2 px-5 border border-gray-700 rounded block w-full mb-3 text-black no-underline hover:bg-gray-100;
 	}
 	.flash {
 		@apply w-full py-2 px-4 mb-4 border text-center font-bold relative;
