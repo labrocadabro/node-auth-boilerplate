@@ -6,7 +6,7 @@ import User from "../models/User.js";
 dotenv.config();
 
 const google = new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT,
+    clientID: process.env.GOOGLE_ID,
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: `${process.env.DOMAIN}/oauth/google/callback`,
   },
