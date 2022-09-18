@@ -13,6 +13,8 @@ router.get('/register', pages.register);
 router.get('/login', pages.login);
 router.get('/forgot', pages.forgot);
 router.get('/reset', pages.reset);
+router.post('/change-password', auth.changePassword);
+router.post('/set-password', auth.setPassword);
 
 router.post('/register', auth.register);
 router.post('/login', auth.login);

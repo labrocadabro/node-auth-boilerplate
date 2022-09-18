@@ -13,10 +13,29 @@ block content
 	div#change-password.settings
 		h3 Password
 		if (user.hasPassword)
-			a(href="") Change password
+			a(href="" id="change") Change password
+			form(method="post" action="/change-password" id="change-form" style="display:none")
+				div
+					label(for="oldPassword") Old Password:
+					input(type="password" name="oldPassword" id="oldPassword")
+				div
+					label(for="newPassword") New Password:
+					input(type="password" name="newPassword" id="newPassword")
+				div
+					label(for="confirm") Confirm New Password:
+					input(type="password" name="confirm" id="confirm")
+				button(type="submit") Change Password
 		else
 			p You have not set a password for your account 
-			a(href="/forgot") Set password
+			a(href="" id="set") Set password
+			form(method="post" action="/set-password" id="set-form" style="display:none")
+				div
+					label(for="password") Password:
+					input(type="password" name="password" id="password")
+				div
+					label(for="confirm") Confirm Password:
+					input(type="password" name="confirm" id="confirm")
+				button(type="submit") Change Password
 
 	div#linked-accounts.settings
 		h3 Manage Linked Accounts
