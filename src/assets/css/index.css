@@ -592,6 +592,13 @@ a:hover {
 h1 {
   font-size: 1.5rem;
   line-height: 2rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
 }
 
 *, ::before, ::after {
@@ -827,8 +834,16 @@ h1 {
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
+.settings {
+  margin-bottom: 1.25rem;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .mt-auto {

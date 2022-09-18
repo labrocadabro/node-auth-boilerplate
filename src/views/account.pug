@@ -1,0 +1,33 @@
+extends layouts/default.pug
+
+block variables
+	- const title = "Dashboard"
+
+block content
+	h1.mb-4 Account Settings
+
+	div#change-email.settings
+		h3 Email
+		span #{user.username} #[a(href="") Change]
+	
+	div#change-password.settings
+		h3 Password
+		a(href="") Change password
+
+	div#linked-accounts.settings
+		h3 Linked Accounts
+		if user.googleId || user.githubId
+			ul
+				if user.googleId
+					li#google Google #[a(href="") Unlink]
+				if user.githubId
+					li#github Github #[a(href="") Unlink]
+		else
+			span No linked accounts
+
+	div#delete-account.settings
+		h3 Delete Account
+		button Delete
+
+	block extra-scripts
+		script(src="/js/account.js") 

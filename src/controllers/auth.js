@@ -52,8 +52,10 @@ export const login = (req, res, next) => {
 }
 
 export const logout = (req, res) => {
-	req.logout(err => { if (err) return next(err) });
-	res.redirect('/login');
+	req.logout(err => { 
+		if (err) return next(err);
+		res.redirect('/login');
+	});
 };
 
 export const notLoggedIn = (req, res) => {

@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get('/', pages.index);
 router.get('/dashboard', pages.dashboard);
+router.get('/account', pages.account);
 
 router.get('/register', pages.register);
 router.get('/login', pages.login);

@@ -23,6 +23,7 @@ const google = new GoogleStrategy({
 					verified: profile.emails[0].verified
 				});
 			}
+			user.googleToken = accessToken;
 			await user.save();
 		}
 		return cb(null, user);
