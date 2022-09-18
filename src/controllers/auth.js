@@ -165,4 +165,31 @@ export const setPassword = async (req, res) => {
 	}
 }
 
-
+export const changeEmail = async (req, res) => {
+	try {
+		const validationErrors = [];
+		const user = await User.findById(req.user._id);
+		if (!user) {
+			req.session.flash = { type: "error", message: ['Something went wrong. Please log in again.']};
+			return res.redirect('/login');
+		}
+		if (!validator.isEmail(req.body.username)) validationErrors.push('Please enter a valid email address');
+		if (validationErrors.length) {
+			req.session.flash = { type: "error", message: validationErrors };
+			return res.redirect(`/account`);
+		}
+		user.username = req.body.username;
+		user.verified = false;
+		await user.save();
+		req.logout(err => { 
+			if (err) return next(err);
+			req.session.flash = { type: "success", message: ['Email changed successfully. Please log in with new email']};
+			res.redirect('/login');
+		});
+	} catch (err) {
+		if (err.code === 11000) err.message = "This email address is registered with another account";
+		if (!err.message) err.message = "Something went wrong.";
+		req.session.flash = { type: "error", message: [err.message]};
+			return res.redirect('/account');
+	}
+}

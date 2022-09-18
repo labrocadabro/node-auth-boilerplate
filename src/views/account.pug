@@ -8,12 +8,16 @@ block content
 
 	div#change-email.settings
 		h3 Email
-		span #{user.username} #[a(href="") Change]
+		span #{user.username} #[a(href="/change-email") Change]
+		form(method="post" action="/change-email" id="email-form" style="display:none")
+			label(for="username") New Email:
+			input(type="email" name="username" id="username")
+			button(type="submit") Change Email
 	
 	div#change-password.settings
 		h3 Password
 		if (user.hasPassword)
-			a(href="" id="change") Change password
+			a(href="/change-password" id="change") Change password
 			form(method="post" action="/change-password" id="change-form" style="display:none")
 				div
 					label(for="oldPassword") Old Password:
@@ -27,7 +31,7 @@ block content
 				button(type="submit") Change Password
 		else
 			p You have not set a password for your account 
-			a(href="" id="set") Set password
+			a(href="/set-password" id="set") Set password
 			form(method="post" action="/set-password" id="set-form" style="display:none")
 				div
 					label(for="password") Password:

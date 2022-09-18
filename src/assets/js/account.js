@@ -5,6 +5,7 @@ const googleLink = document.querySelector('#google a');
 
 googleLink && googleLink.addEventListener('click', unlinkGoogle);
 passwordLink.addEventListener('click', changePassword);
+emailLink.addEventListener('click', changeEmail);
 
 async function unlinkGoogle(e) {
 	e.preventDefault();
@@ -25,4 +26,12 @@ function changePassword(e) {
 		document.getElementById('set-form');
 		form.style.display = 'block';
 		this.style.display = "none";
+}
+
+
+function changeEmail(e) {
+	e.preventDefault();
+	const form = document.getElementById('email-form');
+	form.style.display = 'block';
+	this.style.display = "none";
 }
