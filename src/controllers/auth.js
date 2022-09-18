@@ -4,6 +4,8 @@ import validator from 'validator';
 import User from '../models/User.js';
 import Token from '../models/Token.js';
 
+import { unlinkGithub, unlinkGoogle } from '../routes/oauthRouter.js';
+
 export const register = async (req, res) => {
 
 	try {
@@ -191,5 +193,20 @@ export const changeEmail = async (req, res) => {
 		if (!err.message) err.message = "Something went wrong.";
 		req.session.flash = { type: "error", message: [err.message]};
 			return res.redirect('/account');
+	}
+}
+
+
+export const deleteAccount = async (req, res) => {
+	try {
+		unlinkGoogle(req);
+		unlinkGithub(req);
+		await User.findByIdAndDelete(req.user._id);
+		req.session.flash = { type: "success", message: ['Your account has been deleted successfully']};	
+		res.json('success');
+	} catch (err) {
+		if (!err.message) err.message = "Something went wrong.";
+		req.session.flash = { type: "error", message: [err.message]};
+		res.json('failure');
 	}
 }

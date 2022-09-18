@@ -16,6 +16,7 @@ router.get('/reset', pages.reset);
 router.post('/change-password', auth.changePassword);
 router.post('/set-password', auth.setPassword);
 router.post('/change-email', auth.changeEmail);
+router.delete('/delete-account', auth.deleteAccount);
 
 router.post('/register', auth.register);
 router.post('/login', auth.login);

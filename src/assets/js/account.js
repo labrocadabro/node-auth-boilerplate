@@ -1,23 +1,12 @@
 const emailLink = document.querySelector('#change-email a');
 const passwordLink = document.querySelector('#change-password a');
-const googleLink = document.querySelector('#google a');
+const deleteButton = document.querySelector('#delete-account button#first');
+const deleteForm = document.querySelector('#delete-form');
 
-
-googleLink && googleLink.addEventListener('click', unlinkGoogle);
 passwordLink.addEventListener('click', changePassword);
 emailLink.addEventListener('click', changeEmail);
-
-async function unlinkGoogle(e) {
-	e.preventDefault();
-	const token = document.querySelector('[name="token"]').value;
-	const res = await fetch(`https://accounts.google.com/o/oauth2/revoke?token=${token}`, {
-			method: 'post',
-			headers: { 'content-type': 'application/x-www-form-urlencoded' }
-	});
-	const data = await res.json();
-	if ( data.error ) location.href = "/oauth/google/revoke?success=false";
-	else location.href = "/oauth/google/revoke?success=true";
-}
+deleteButton.addEventListener('click', confirmDeleteAccount);
+deleteForm.addEventListener('submit', deleteAccount);
 
 function changePassword(e) {
 	e.preventDefault();
@@ -34,4 +23,28 @@ function changeEmail(e) {
 	const form = document.getElementById('email-form');
 	form.style.display = 'block';
 	this.style.display = "none";
+}
+
+function confirmDeleteAccount() {
+	const form = document.getElementById('delete-form');
+	form.style.display = 'block';
+	this.style.display = "none";
+}
+
+async function deleteAccount(e) {
+	e.preventDefault();
+	console.log(this)
+	const username = document.getElementById('delete_username').value;
+	const confirm = document.getElementById('delete_confirm').value;
+	if (username !== confirm) {
+		document.getElementById('wrong').innerText = "Your entry did not match the email on the account";
+		return;
+	}
+	console.log('matched')
+	const res = await fetch('/delete-account', {
+		method: 'delete'
+	})
+	const data = await res.json();
+	console.log(data);
+	location.href = "/";
 }

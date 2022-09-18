@@ -51,8 +51,6 @@ block content
 							span.text-red-500 In order to maintain access to your account, please set a password or add another linked account before unlinking Google. Alteratively, use the delete account option to remove your account completely, and any linked accounts will be unlinked automatically.
 						else
 							a(href="/oauth/google/revoke") Unlink
-							form#revoke-google
-								input(type="hidden" name="token" value=googleToken)
 				if user.githubId
 					li#github Github 
 						if !user.hasPassword && !user.googleId
@@ -64,7 +62,14 @@ block content
 
 	div#delete-account.settings
 		h3 Delete Account
-		button Delete
+		button#first Delete
+		form(id="delete-form" style="display:none")
+			p.text-red-500 CAUTION. Deleting your account is irreversible. Please enter your email address below to confirm you would like to delete your account:
+			p#wrong.text-red-500
+			input(type="hidden" name="username" id="delete_username" value=user.username)
+			label(for="confirm") Your email:
+			input(type="email" name="confirm" id="delete_confirm")
+			button#second(type="submit") DELETE ACCOUNT
 
 block extra-scripts
 	script(src="/js/account.js") 
