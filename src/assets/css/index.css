@@ -838,6 +838,10 @@ h3 {
   margin-bottom: 1.25rem;
 }
 
+#dummy {
+  display: none;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }

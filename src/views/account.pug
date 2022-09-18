@@ -20,6 +20,9 @@ block content
 			ul
 				if user.googleId
 					li#google Google #[a(href="") Unlink]
+					iframe#dummy(name="dummy")
+					form#revoke-google(method="post" action="https://oauth2.googleapis.com/revoke" target="dummy")
+						input(type="hidden" name="token" value=googleToken)
 				if user.githubId
 					li#github Github #[a(href="") Unlink]
 		else

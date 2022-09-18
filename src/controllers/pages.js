@@ -13,8 +13,8 @@ export const dashboard = (req, res) => {
 };
 
 export const account = (req, res) => {
-	if (!req.isAuthenticated()) notLoggedIn(req, res);
-	else res.render("account");
+	if (!req.isAuthenticated()) return notLoggedIn(req, res);
+	res.render("account", {googleToken: req.user.googleToken || null});
 };
 
 export const login = (req, res) => {
