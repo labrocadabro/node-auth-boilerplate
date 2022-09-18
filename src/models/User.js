@@ -7,7 +7,9 @@ const userSchema = new Schema({
 	// username and password are handled automatically by passport local mongoose
 	verified: {type: Boolean, default: false},
 	googleId: String,
-	githubId: String
+	googleToken: String,
+	githubId: String,
+	githubToken: String
 
 });
 
