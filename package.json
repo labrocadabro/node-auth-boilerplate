@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/labrocadabro/node-mongo-boilerplate#readme",
   "dependencies": {
+    "@octokit/auth-oauth-user": "^2.0.3",
+    "@octokit/core": "^4.0.5",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.0.2",

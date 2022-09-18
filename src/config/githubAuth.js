@@ -20,11 +20,13 @@ const github = new GithubStrategy({
 				user = new User({ 
 					username: profile.emails[0].value, 
 					githubId: profile.id, 
+					hasPassword: false,
 					verified: true
 				});
 			}
-			await user.save();
 		}
+		user.githubToken = accessToken;
+		await user.save();
 		return cb(null, user);
 	}
 );
