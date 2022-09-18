@@ -16,19 +16,26 @@ block content
 			a(href="") Change password
 		else
 			p You have not set a password for your account 
-			a(href="") Set password
+			a(href="/forgot") Set password
 
 	div#linked-accounts.settings
 		h3 Manage Linked Accounts
 		if user.googleId || user.githubId
 			ul
 				if user.googleId
-					li#google Google #[a(href="/oauth/google/revoke") Unlink]
-					iframe#dummy(name="dummy")
-					form#revoke-google(method="post" action="https://oauth2.googleapis.com/revoke" target="dummy")
-						input(type="hidden" name="token" value=googleToken)
+					li#google Google 
+						if !user.hasPassword && !user.githubId
+							span.text-red-500 In order to maintain access to your account, please set a password or add another linked account before unlinking Google. Alteratively, use the delete account option to remove your account completely, and any linked accounts will be unlinked automatically.
+						else
+							a(href="/oauth/google/revoke") Unlink
+							form#revoke-google
+								input(type="hidden" name="token" value=googleToken)
 				if user.githubId
-					li#github Github #[a(href="/oauth/github/revoke") Unlink]
+					li#github Github 
+						if !user.hasPassword && !user.googleId
+							span.text-red-500 In order to maintain access to your account, please set a password or add another linked account before unlinking Github. Alteratively, use the delete account option to remove your account completely, and any linked accounts will be unlinked automatically.
+						else 
+							a(href="/oauth/github/revoke") Unlink
 		else
 			span No linked accounts
 

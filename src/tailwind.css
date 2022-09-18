@@ -52,8 +52,8 @@
 	.settings {
 		@apply mb-5;
 	}
-
+/* 
 	#dummy {
 		@apply hidden;
-	}
+	} */
 }

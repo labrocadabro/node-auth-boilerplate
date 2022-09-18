@@ -838,9 +838,10 @@ h3 {
   margin-bottom: 1.25rem;
 }
 
-#dummy {
-  display: none;
-}
+/* 
+	#dummy {
+		@apply hidden;
+	} */
 
 .col-span-2 {
   grid-column: span 2 / span 2;
@@ -900,4 +901,9 @@ h3 {
 
 .text-center {
   text-align: center;
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
