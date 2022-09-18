@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
 	// username and password are handled automatically by passport local mongoose
 	verified: {type: Boolean, default: false},
+	hasPassword: {type: Boolean, default: true},
 	googleId: String,
 	googleToken: String,
 	githubId: String,

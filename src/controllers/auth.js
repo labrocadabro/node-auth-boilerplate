@@ -102,6 +102,7 @@ export const reset = async (req, res) => {
 			return res.redirect(`/reset?token=${req.body.token}`);
 		}
 	await user.setPassword(req.body.password);
+	user.hasPassword = true;
 	await user.save();
 	await Token.findOneAndDelete({ token: req.body.token })
 	req.session.flash = { type: "success", message: ["Password changed successfully."]};

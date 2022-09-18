@@ -12,19 +12,23 @@ block content
 	
 	div#change-password.settings
 		h3 Password
-		a(href="") Change password
+		if (user.hasPassword)
+			a(href="") Change password
+		else
+			p You have not set a password for your account 
+			a(href="") Set password
 
 	div#linked-accounts.settings
-		h3 Linked Accounts
+		h3 Manage Linked Accounts
 		if user.googleId || user.githubId
 			ul
 				if user.googleId
-					li#google Google #[a(href="") Unlink]
+					li#google Google #[a(href="/oauth/google/revoke") Unlink]
 					iframe#dummy(name="dummy")
 					form#revoke-google(method="post" action="https://oauth2.googleapis.com/revoke" target="dummy")
 						input(type="hidden" name="token" value=googleToken)
 				if user.githubId
-					li#github Github #[a(href="") Unlink]
+					li#github Github #[a(href="/oauth/github/revoke") Unlink]
 		else
 			span No linked accounts
 
