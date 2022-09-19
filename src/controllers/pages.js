@@ -12,6 +12,11 @@ export const dashboard = (req, res) => {
 	else res.render("dashboard");
 };
 
+export const account = (req, res) => {
+	if (!req.isAuthenticated()) return notLoggedIn(req, res);
+	res.render("account");
+};
+
 export const login = (req, res) => {
 	if (req.isAuthenticated()) res.redirect('/dashboard');
 	else res.render('login');	

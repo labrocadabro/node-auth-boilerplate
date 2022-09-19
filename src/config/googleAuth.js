@@ -20,11 +20,13 @@ const google = new GoogleStrategy({
 				user = new User({ 
 					username: profile.emails[0].value, 
 					googleId: profile.id, 
+					hasPassword: false,
 					verified: profile.emails[0].verified
 				});
 			}
-			await user.save();
 		}
+		user.googleToken = accessToken;
+		await user.save();
 		return cb(null, user);
 	}
 );

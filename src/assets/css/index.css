@@ -592,6 +592,35 @@ a:hover {
 h1 {
   font-size: 1.5rem;
   line-height: 2rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+
+button,  a.button {
+  margin-bottom: 0.75rem;
+  display: block;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+}
+
+button:hover,  a.button:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 *, ::before, ::after {
@@ -756,26 +785,7 @@ h1 {
 }
 
 .sign-form button,  .sign-form a.button {
-  margin-bottom: 0.75rem;
-  display: block;
   width: 100%;
-  border-radius: 0.25rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(55 65 81 / var(--tw-border-opacity));
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
-}
-
-.sign-form button:hover,  .sign-form a.button:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 .flash {
@@ -827,8 +837,21 @@ h1 {
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
+.settings {
+  margin-bottom: 1.25rem;
+}
+
+/* 
+	#dummy {
+		@apply hidden;
+	} */
+
 .col-span-2 {
   grid-column: span 2 / span 2;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .mt-auto {
@@ -881,4 +904,9 @@ h1 {
 
 .text-center {
   text-align: center;
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
