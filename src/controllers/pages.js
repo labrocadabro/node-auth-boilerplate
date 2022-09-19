@@ -14,7 +14,7 @@ export const dashboard = (req, res) => {
 
 export const account = (req, res) => {
 	if (!req.isAuthenticated()) return notLoggedIn(req, res);
-	res.render("account", {googleToken: req.user.googleToken || null});
+	res.render("account");
 };
 
 export const login = (req, res) => {
