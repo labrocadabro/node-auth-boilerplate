@@ -33,14 +33,12 @@ function confirmDeleteAccount() {
 
 async function deleteAccount(e) {
 	e.preventDefault();
-	console.log(this)
 	const username = document.getElementById('delete_username').value;
 	const confirm = document.getElementById('delete_confirm').value;
 	if (username !== confirm) {
 		document.getElementById('wrong').innerText = "Your entry did not match the email on the account";
 		return;
 	}
-	console.log('matched')
 	const res = await fetch('/delete-account', {
 		method: 'delete'
 	})
